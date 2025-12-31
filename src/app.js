@@ -10,8 +10,8 @@ import cors from 'cors';
 ]; */
 const ALLOWED_ORIGINS = [
   "http://localhost:8000",
-  "https://ltapromowebcol.lat",
-  "https://www.ltapromowebcol.lat"
+  "https://ltapromowebcol.com",
+  "https://www.ltapromowebcol.com "
 ];
 
 // --- 2) CORS robusto (maneja preflight correctamente)
